@@ -1,0 +1,9 @@
+directivas/
+scripts/
+verticestudio-web/
+.netlify/
+.tmp/
+.claude/
+index.backup-before-mobile-fullbleed.html
+index.backup-before-premium-ai.html
+index.backup-before-rolex-pass.html

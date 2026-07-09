@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Vértice Studio — Páginas que venden</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+  :root {
+    --gold: #B8913A;
+    --black: #0D0D0D;
+    --beige: #F8F5F0;
+    --white: #FFFFFF;
+    --hero-bg: #111111;
+    --line: #EAEAEA;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "DM Sans", system-ui, sans-serif;
+    background: var(--white);
+    color: var(--black);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  .serif { font-family: "Playfair Display", serif; }
+  .mono { font-family: "JetBrains Mono", ui-monospace, monospace; }
+
+  /* ===== Hero animations ===== */
+  @keyframes heroFadeUp {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes heroVideoIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  @keyframes glowPulse {
+    0%, 100% { opacity: 0.85; transform: translate(-50%, -50%) scale(1); }
+    50%      { opacity: 1;    transform: translate(-50%, -50%) scale(1.05); }
+  }
+  @keyframes chevronBounce {
+    0%, 100% { transform: translateY(0); opacity: 0.2; }
+    50%      { transform: translateY(8px); opacity: 0.5; }
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @keyframes scrollDash {
+    0%   { transform: translateX(0); }
+    50%  { transform: translateX(42px); }
+    100% { transform: translateX(0); }
+  }
+  @keyframes ringGlow {
+    0%, 100% { opacity: 0.85; transform: scale(1); }
+    50%      { opacity: 1;    transform: scale(1.04); }
+  }
+
+  .hero-anim {
+    opacity: 0;
+    animation: heroFadeUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+  .hero-video-anim {
+    opacity: 0;
+    animation: heroVideoIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  .reveal.is-visible {
+    animation: fadeInUp 0.7s ease-out forwards;
+  }
+
+  /* ===== Hero noise overlay ===== */
+  .hero-noise {
+    position: absolute; inset: 0;
+    pointer-events: none;
+    opacity: 0.025;
+    mix-blend-mode: screen;
+  }
+
+  /* ===== Marquee ===== */
+  .marquee-track {
+    display: flex;
+    width: max-content;
+    animation: marquee 30s linear infinite;
+  }
+  .marquee:hover .marquee-track { animation-play-state: paused; }
+  @media (max-width: 768px) {
+    .marquee-track { animation-duration: 18s; }
+  }
+
+  /* ===== Form inputs ===== */
+  .vs-input,
+  .vs-select {
+    width: 100%;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-size: 14px;
+    font-family: inherit;
+    color: var(--black);
+    transition: border-color 180ms ease, box-shadow 180ms ease;
+    appearance: none;
+    -webkit-appearance: none;
+  }
+  .vs-input::placeholder { color: rgba(13, 13, 13, 0.3); }
+  .vs-input:focus,
+  .vs-select:focus {
+    outline: none;
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(184, 145, 58, 0.15);
+  }
+  .vs-select {
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'><path d='M1 1.5L6 6.5L11 1.5' stroke='%230D0D0D' stroke-opacity='0.4' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 40px;
+  }
+  .vs-label {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(13, 13, 13, 0.45);
+    margin-bottom: 6px;
+  }
+
+  /* ===== CTA buttons ===== */
+  .cta-gold {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--gold);
+    color: var(--black);
+    font-family: "DM Sans", sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    border: none;
+    border-radius: 999px;
+    padding: 14px 28px;
+    cursor: pointer;
+    transition: transform 180ms ease, box-shadow 180ms ease;
+    box-shadow:
+      0 1px 2px rgba(184, 145, 58, 0.3),
+      0 4px 12px rgba(184, 145, 58, 0.15),
+      0 12px 24px rgba(184, 145, 58, 0.08);
+  }
+  .cta-gold:hover { transform: scale(0.98); }
+  .cta-gold .arrow { transition: transform 220ms ease; }
+  .cta-gold:hover .arrow { transform: translateX(3px); }
+
+  .cta-black {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    background: var(--black);
+    color: #fff;
+    font-family: "DM Sans", sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    border: none;
+    border-radius: 999px;
+    padding: 14px 28px;
+    cursor: pointer;
+    transition: background 180ms ease;
+  }
+  .cta-black:hover { background: #1a1a1a; }
+
+  /* ===== Bottom floating nav ===== */
+  .bottom-nav {
+    position: fixed;
+    left: 50%;
+    bottom: 24px;
+    transform: translateX(-50%) translateY(20px);
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 10px 10px 10px 22px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 999px;
+    box-shadow:
+      0 2px 8px rgba(0, 0, 0, 0.06),
+      0 8px 24px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 360ms ease, transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .bottom-nav.is-shown {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* hide scrollbar on form section selects (cosmetic) */
+  select::-ms-expand { display: none; }
+
+  /* small util */
+  .gold-dot {
+    display: inline-block;
+    width: 4px; height: 4px;
+    border-radius: 999px;
+    background: var(--gold);
+  }
+
+  /* ===== CTA Pulse Effect ===== */
+  @keyframes ctaPulse {
+    0%, 100% {
+      box-shadow: 0 1px 2px rgba(184,145,58,0.3), 0 4px 12px rgba(184,145,58,0.15), 0 12px 24px rgba(184,145,58,0.08);
+    }
+    50% {
+      box-shadow: 0 1px 2px rgba(184,145,58,0.5), 0 4px 12px rgba(184,145,58,0.25), 0 12px 24px rgba(184,145,58,0.15);
+    }
+  }
+  .cta-gold.pulse {
+    animation: ctaPulse 2s ease-in-out infinite;
+  }
+</style>
+
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXX"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-XXXXXXXX');
+  window.gtag = gtag;
+</script>
+
+<!-- EmailJS -->
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/index.min.js"></script>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="water-hero.jsx"></script>
+<script type="text/babel" src="ring-hero.jsx"></script>
+<script type="text/babel" src="sections.jsx"></script>
+<script type="text/babel" src="app.jsx"></script>
+
+</body>
+</html>

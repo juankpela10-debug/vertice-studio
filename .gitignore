@@ -1,0 +1,7 @@
+.vercel
+.env*
+.netlify
+.tmp
+node_modules
+.playwright-mcp
+.claude/worktrees
