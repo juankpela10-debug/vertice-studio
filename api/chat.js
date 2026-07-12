@@ -127,9 +127,19 @@ module.exports = async (req, res) => {
 
   const userTurns = messages.filter((m) => m.role === 'user').length;
   const isFinalTurn = userTurns >= MAX_USER_TURNS;
-  const system = isFinalTurn
-    ? SYSTEM_PROMPT + '\n\n(Esta es tu ÚLTIMA respuesta: cierra ya con la dirección inicial, no hagas más preguntas.)'
-    : SYSTEM_PROMPT;
+
+  // System como bloques: el prompt estático grande se cachea (prompt caching,
+  // ~90% menos coste de tokens de sistema por turno). La instrucción de cierre
+  // varía por turno, así que va en un bloque aparte sin caché.
+  const system = [
+    { type: 'text', text: SYSTEM_PROMPT, cache_control: { type: 'ephemeral' } },
+  ];
+  if (isFinalTurn) {
+    system.push({
+      type: 'text',
+      text: '(Esta es tu ÚLTIMA respuesta: cierra ya con la dirección inicial, no hagas más preguntas.)',
+    });
+  }
 
   try {
     const anthropicRes = await fetch('https://api.anthropic.com/v1/messages', {
@@ -152,6 +162,18 @@ module.exports = async (req, res) => {
       res.status(502).json({ error: data.error?.message || 'anthropic_error' });
       return;
     }
+    // Observabilidad de coste: tokens por turno visibles en los logs de Vercel.
+    const u = data.usage || {};
+    console.log(
+      '[chat_usage]',
+      JSON.stringify({
+        turn: userTurns,
+        in: u.input_tokens,
+        out: u.output_tokens,
+        cache_read: u.cache_read_input_tokens,
+        cache_write: u.cache_creation_input_tokens,
+      })
+    );
     const textBlock = Array.isArray(data.content)
       ? data.content.find((b) => b.type === 'text' && b.text)
       : null;
