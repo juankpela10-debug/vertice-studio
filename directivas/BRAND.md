@@ -86,6 +86,16 @@ Regla extra: **cero emojis** en marca (web, agente, propuestas). Excepción úni
 - ❌ Antes: "Creamos experiencias digitales innovadoras que transforman tu negocio."
 - ✅ Después: "Páginas y sistemas que venden. Pruébalo abajo: es el mismo tipo de agente que construimos para negocios como el tuyo."
 
+### Hashtags en redes
+
+Toda publicación de Vértice Studio en Instagram/Facebook usa esta combinación fija (12-13 hashtags):
+
+- **3 de marca (fijos, siempre):** `#VerticeStudio` `#Medellin` `#Colombia`
+- **5 de servicio (ajustar según la pieza):** `#DesarrolloWeb` `#InteligenciaArtificial` `#Automatizacion` `#DisenoWeb` `#AgentesIA` — sustituir 1-2 por el servicio específico de la publicación (`#Ecommerce`, `#LandingPage`, `#WhatsAppBusiness`, etc.) cuando aplique.
+- **4-5 de público:** `#Empresas` `#Emprendedores` `#PyMES` `#NegociosDigitales`
+
+Regla: no exceder esta estructura ni mezclar hashtags genéricos de alcance (`#viral`, `#instagood`) — diluyen el público objetivo B2B/SMB.
+
 **Email de seguimiento a lead**
 - ❌ Antes: "¡Hola! 😊 Gracias por tu interés en nuestros servicios. Quedamos atentos a cualquier inquietud."
 - ✅ Después: "Hola Sara. Vi lo que me contaste de tu tienda: lo primero que arreglaría es el catálogo en WhatsApp, así dejas de perder los pedidos de la noche. Te propongo una llamada de 15 min mañana. ¿Te sirve a las 10?"

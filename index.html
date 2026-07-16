@@ -598,6 +598,18 @@ nav:not(.scrolled) .nav-links{border:1px solid rgba(255,255,255,.14);background:
 .ai-send:hover{background:#fff}
 .ai-send:disabled{opacity:.5;cursor:not-allowed}
 .ai-agent-note{padding:10px 20px 16px;font-size:10px;letter-spacing:1px;color:rgba(255,255,255,.28);text-align:center}
+.ai-agent-body.has-radio{max-height:560px}
+.ai-radiografia{align-self:stretch;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.14);border-top:2px solid var(--champagne);padding:18px;display:flex;flex-direction:column;gap:12px}
+.ai-radio-head{font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--champagne)}
+.ai-radio-sub{font-size:13px;color:rgba(255,255,255,.85);line-height:1.5;margin-top:-6px}
+.ai-radio-sec{display:flex;flex-direction:column;gap:5px}
+.ai-radio-label{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.45)}
+.ai-radio-sec p{font-size:13px;line-height:1.55;color:rgba(255,255,255,.82);margin:0}
+.ai-radio-sec ul,.ai-radio-sec ol{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:4px}
+.ai-radio-sec li{font-size:13px;line-height:1.5;color:rgba(255,255,255,.82)}
+.ai-radio-sec li::marker{color:var(--champagne)}
+.ai-radio-sec strong{color:rgba(255,255,255,.95);font-weight:600}
+.ai-radio-foot{font-size:11px;line-height:1.5;color:rgba(255,255,255,.4);border-top:1px solid rgba(255,255,255,.08);padding-top:10px}
 .ai-capture{padding:18px 20px 20px;border-top:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column;gap:10px}
 .ai-capture p{font-size:12px;color:rgba(255,255,255,.5);margin:0}
 .ai-capture-row{display:flex;gap:8px;flex-wrap:wrap}
@@ -697,16 +709,16 @@ nav:not(.scrolled) .nav-links{border:1px solid rgba(255,255,255,.14);background:
     <div class="ai-agent" id="ai-agent">
       <div class="ai-agent-head">
         <span class="ai-agent-dot"></span>
-        <span class="ai-agent-label">Agente de diagnóstico · en vivo</span>
+        <span class="ai-agent-label">Consultor de diagnóstico · en vivo</span>
       </div>
       <div class="ai-agent-body" id="ai-log">
-        <div class="ai-msg ai-msg-bot">Hola, soy el agente de Vértice Studio. Cuéntame en una frase qué hace tu negocio y qué quieres lograr — te doy una primera dirección ahora mismo, gratis.</div>
+        <div class="ai-msg ai-msg-bot">Hola, soy el consultor de diagnóstico de Vértice Studio. Antes de hablar de soluciones quiero entender tu operación. Cuéntame: ¿a qué se dedica tu empresa?</div>
       </div>
       <form class="ai-agent-input" id="ai-form" onsubmit="return sendAiMessage(event)">
-        <input type="text" id="ai-input" placeholder="Ej: tengo una tienda de ropa y quiero vender por WhatsApp..." autocomplete="off" maxlength="300">
+        <input type="text" id="ai-input" placeholder="Ej: tenemos una distribuidora con 6 personas, vendemos por WhatsApp..." autocomplete="off" maxlength="300">
         <button type="submit" class="ai-send" aria-label="Enviar"><i class="ph ph-arrow-up"></i></button>
       </form>
-      <p class="ai-agent-note">Respuestas reales de IA · sin costo · no reemplaza la cotización final</p>
+      <p class="ai-agent-note">Diagnóstico real con IA · al final recibes tu Radiografía Operativa</p>
     </div>
 
     <div class="hero-stats">
@@ -819,7 +831,7 @@ nav:not(.scrolled) .nav-links{border:1px solid rgba(255,255,255,.14);background:
       </div>
     </div>
     <div class="srv-feat-cta">
-      <a href="#cta-final" class="srv-feat-btn">Recibir dirección inicial →</a><span class="srv-feat-time">→ Sin costo · en 24h</span>
+      <a href="#cta-final" class="srv-feat-btn">Recibir dirección inicial →</a><span class="srv-feat-time">→ Respuesta en 24h</span>
     </div>
   </div>
 
@@ -1100,7 +1112,7 @@ nav:not(.scrolled) .nav-links{border:1px solid rgba(255,255,255,.14);background:
     <div class="cta-left reveal">
       <div class="s-eye">Primer paso</div><h2 class="s-h2">Hablemos de lo que<br>tu negocio necesita<br><em>construir.</em></h2><p class="cta-sub">Cuéntame qué vendes, qué quieres mejorar y qué parte de tu operación o venta quieres resolver. Te respondo con una dirección inicial: enfoque, alcance recomendado, tiempos y presupuesto estimado.</p>
       <div class="trust-row">
-        <div class="trust-item">Primera orientación estratégica sin costo</div>
+        <div class="trust-item">Primera orientación estratégica</div>
         <div class="trust-item">Respuesta en menos de 24 horas</div>
         <div class="trust-item">Dirección visual antes de comprometer el proyecto</div>
         <div class="trust-item">IA, diseño y conversión en una sola ruta</div>
@@ -1140,7 +1152,7 @@ nav:not(.scrolled) .nav-links{border:1px solid rgba(255,255,255,.14);background:
           </div>
           <div class="fg"><label>Cuéntame más (opcional)</label><textarea id="c-desc" placeholder="¿Qué hace tu negocio? ¿Tienes referencias de sitios que te gusten?"></textarea></div>
           <button class="f-submit" onclick="submitCtaForm()">Recibir dirección inicial →</button>
-          <p class="f-note">Primera orientación sin costo · Respuesta en menos de 24h · Información confidencial</p>
+          <p class="f-note">Respuesta en menos de 24h · Información confidencial</p>
         </div>
         <div class="f-success" id="cta-success">
           <div style="font-size:40px;margin-bottom:14px;color:var(--gold)">✦</div>
@@ -1363,9 +1375,9 @@ function submitCtaForm() {
   sendForm(payload, 'form-body-cta', 'cta-success');
 }
 
-/* ── AGENTE IA DEL HERO ──────────────────────────── */
-const AI_MAX_TURNS = 4;
-const aiState = { history: [], turns: 0, done: false, sending: false };
+/* ── CONSULTOR DE DIAGNÓSTICO DEL HERO ───────────── */
+const AI_MAX_TURNS = 10;
+const aiState = { history: [], turns: 0, done: false, sending: false, radiografiaPromise: null };
 
 function aiLog() { return document.getElementById('ai-log'); }
 
@@ -1423,12 +1435,14 @@ async function sendAiMessage(e) {
     if (data.done || aiState.turns >= AI_MAX_TURNS) {
       aiState.done = true;
       track('agente_completado', {});
+      startRadiografia();
       showAiCapture();
     }
   } catch (err) {
     hideAiTyping();
     appendAiMsg('bot', 'Se me cruzó un cable justo ahora. Escríbeme directo y seguimos la conversación por WhatsApp.');
     aiState.done = true;
+    startRadiografia();
     showAiCapture();
   } finally {
     aiState.sending = false;
@@ -1437,25 +1451,136 @@ async function sendAiMessage(e) {
   return false;
 }
 
+/* La radiografía se genera en segundo plano mientras el visitante llena el
+   formulario de captura — al enviarlo, casi siempre ya está lista. */
+function startRadiografia() {
+  const userTurns = aiState.history.filter(m => m.role === 'user').length;
+  if (userTurns < 3) return; // sin conversación suficiente no hay diagnóstico honesto
+  aiState.radiografiaPromise = fetch('/api/radiografia', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ messages: aiState.history })
+  })
+    .then(r => (r.ok ? r.json() : null))
+    .then(d => (d && d.radiografia) || null)
+    .catch(() => null);
+}
+
 function showAiCapture() {
   document.getElementById('ai-form').style.display = 'none';
   document.querySelector('.ai-agent-note').style.display = 'none';
+  const hasRadio = !!aiState.radiografiaPromise;
   const wrap = document.createElement('div');
   wrap.className = 'ai-capture';
   wrap.innerHTML = `
-    <p>Déjame tu nombre y WhatsApp para confirmarte el detalle en menos de 24h.</p>
+    <p>${hasRadio
+      ? 'Tu <strong>Radiografía Operativa VÉRTICE</strong> está lista: el diagnóstico inicial de tu negocio con lo que conversamos. Déjame tu nombre y WhatsApp y te la muestro aquí mismo.'
+      : 'Déjame tu nombre y WhatsApp para retomar el diagnóstico en menos de 24h.'}</p>
     <div class="ai-capture-row">
       <input type="text" id="ai-nombre" placeholder="Tu nombre" autocomplete="off">
       <input type="tel" id="ai-tel" placeholder="+57 300 123 4567" autocomplete="off">
-      <button type="button" onclick="submitAiCapture()">Enviar →</button>
+      <button type="button" onclick="submitAiCapture()">${hasRadio ? 'Ver mi radiografía →' : 'Enviar →'}</button>
     </div>
     <div class="ai-capture-note" id="ai-capture-note"></div>
   `;
   document.getElementById('ai-agent').appendChild(wrap);
 }
 
-function aiTranscript() {
-  return aiState.history.map(m => (m.role === 'user' ? 'Visitante: ' : 'Agente: ') + m.content).join(' | ').slice(0, 1200);
+function aiTranscript(maxLen) {
+  return aiState.history.map(m => (m.role === 'user' ? 'Visitante: ' : 'Consultor: ') + m.content).join(' | ').slice(0, maxLen || 1200);
+}
+
+function radiografiaResumen(r) {
+  if (!r) return '';
+  const linea = (arr) => (Array.isArray(arr) ? arr.join('; ') : '');
+  const ruta = Array.isArray(r.hoja_de_ruta)
+    ? r.hoja_de_ruta.map(p => (p.prioridad ? p.prioridad + '. ' : '') + (p.accion || '')).join(' | ')
+    : '';
+  return [
+    'RADIOGRAFIA — Negocio: ' + (r.negocio || ''),
+    'Captación: ' + (r.captacion || ''),
+    'Cuellos: ' + linea(r.cuellos_de_botella),
+    'Manual: ' + linea(r.procesos_manuales),
+    'Fugas: ' + linea(r.fugas),
+    'Impacto: ' + (r.impacto_estimado || ''),
+    'Ruta: ' + ruta,
+  ].join(' || ');
+}
+
+function renderRadiografia(r) {
+  const log = aiLog();
+  log.classList.add('has-radio');
+  const card = document.createElement('div');
+  card.className = 'ai-radiografia';
+
+  const addSection = (label, content) => {
+    if (!content || (Array.isArray(content) && content.length === 0)) return;
+    const sec = document.createElement('div');
+    sec.className = 'ai-radio-sec';
+    const h = document.createElement('div');
+    h.className = 'ai-radio-label';
+    h.textContent = label;
+    sec.appendChild(h);
+    if (Array.isArray(content)) {
+      const ul = document.createElement('ul');
+      content.forEach(item => {
+        const li = document.createElement('li');
+        li.textContent = typeof item === 'string' ? item : (item.accion || '');
+        ul.appendChild(li);
+      });
+      sec.appendChild(ul);
+    } else {
+      const p = document.createElement('p');
+      p.textContent = content;
+      sec.appendChild(p);
+    }
+    card.appendChild(sec);
+  };
+
+  const head = document.createElement('div');
+  head.className = 'ai-radio-head';
+  head.textContent = 'Radiografía Operativa VÉRTICE';
+  card.appendChild(head);
+  if (r.negocio) {
+    const sub = document.createElement('div');
+    sub.className = 'ai-radio-sub';
+    sub.textContent = r.negocio;
+    card.appendChild(sub);
+  }
+
+  addSection('Cómo llegan hoy tus clientes', r.captacion);
+  addSection('Cuellos de botella detectados', r.cuellos_de_botella);
+  addSection('Procesos que hoy son manuales', r.procesos_manuales);
+  addSection('Dónde se pierden oportunidades', r.fugas);
+  addSection('Impacto estimado de no hacer nada', r.impacto_estimado);
+
+  if (Array.isArray(r.hoja_de_ruta) && r.hoja_de_ruta.length) {
+    const sec = document.createElement('div');
+    sec.className = 'ai-radio-sec';
+    const h = document.createElement('div');
+    h.className = 'ai-radio-label';
+    h.textContent = 'Hoja de ruta priorizada';
+    sec.appendChild(h);
+    const ol = document.createElement('ol');
+    r.hoja_de_ruta.forEach(p => {
+      const li = document.createElement('li');
+      const strong = document.createElement('strong');
+      strong.textContent = p.accion || '';
+      li.appendChild(strong);
+      if (p.impacto) li.appendChild(document.createTextNode(' — ' + p.impacto));
+      ol.appendChild(li);
+    });
+    sec.appendChild(ol);
+    card.appendChild(sec);
+  }
+
+  const foot = document.createElement('div');
+  foot.className = 'ai-radio-foot';
+  foot.textContent = 'Diagnóstico inicial generado con lo conversado. La sesión de diagnóstico lo profundiza y lo convierte en un sistema a la medida.';
+  card.appendChild(foot);
+
+  log.appendChild(card);
+  card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
 async function submitAiCapture() {
@@ -1463,24 +1588,45 @@ async function submitAiCapture() {
   const tel = document.getElementById('ai-tel').value.trim();
   const note = document.getElementById('ai-capture-note');
   if (!nombre || !tel) { note.textContent = 'Completa nombre y WhatsApp.'; return; }
-  const payload = {
-    fecha: new Date().toLocaleString('es-CO', { timeZone: 'America/Bogota' }),
-    nombre, telefono: tel, email: '', negocio: '',
-    tipo: 'Diagnóstico con agente IA',
-    presupuesto: '', descripcion: aiTranscript(), origen: 'agente-ia'
-  };
-  note.textContent = 'Enviando...';
+  note.textContent = aiState.radiografiaPromise ? 'Generando tu radiografía...' : 'Enviando...';
   const btn = document.querySelector('.ai-capture button');
   if (btn) btn.disabled = true;
+
+  // Espera la radiografía que se viene generando en segundo plano (máx 25s).
+  let radiografia = null;
+  if (aiState.radiografiaPromise) {
+    radiografia = await Promise.race([
+      aiState.radiografiaPromise,
+      new Promise(resolve => setTimeout(() => resolve(null), 25000))
+    ]);
+  }
+
+  const resumen = radiografiaResumen(radiografia);
+  const payload = {
+    fecha: new Date().toLocaleString('es-CO', { timeZone: 'America/Bogota' }),
+    nombre, telefono: tel, email: '', negocio: radiografia && radiografia.negocio ? radiografia.negocio : '',
+    tipo: 'Diagnóstico con consultor IA',
+    presupuesto: '',
+    descripcion: (resumen ? resumen + ' ||| CHAT: ' : '') + aiTranscript(resumen ? 800 : 1200),
+    origen: 'agente-ia'
+  };
   let saved = false;
   try {
     const r = await fetch('/api/lead', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
     const d = await r.json().catch(() => ({}));
     saved = !!(d && d.saved);
   } catch (e) {}
-  track('lead_capturado', { origen: 'agente-ia', saved: saved });
+  track('lead_capturado', { origen: 'agente-ia', saved: saved, radiografia: !!radiografia });
+
   const wrap = document.querySelector('.ai-capture');
-  wrap.innerHTML = '<p>Recibido. Te escribo en menos de 24h con el detalle.</p>';
+  wrap.innerHTML = '<p></p>';
+  if (radiografia) {
+    track('radiografia_entregada', {});
+    renderRadiografia(radiografia);
+    wrap.querySelector('p').textContent = 'Ahí la tienes, ' + nombre.split(' ')[0] + '. Te escribo en menos de 24h para agendar la sesión de diagnóstico y profundizar en estos puntos.';
+  } else {
+    wrap.querySelector('p').textContent = 'Recibido. Te escribo en menos de 24h con tu diagnóstico inicial.';
+  }
   injectWaCta(wrap, payload);
 }
 </script>
